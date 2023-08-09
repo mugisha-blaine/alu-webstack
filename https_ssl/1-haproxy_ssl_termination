@@ -34,7 +34,8 @@ defaults
 
 frontend my_frontend
         bind *:80
-        bind *:443 ssl crt /etc/letsencrypt/live/www.globalblaine.tech/privkey.pem
+        redirect scheme https if !{ ssl_fc }
+        bind *:443 ssl crt /etc/letsencrypt/live/www.globalblaine.tech/www.globalblaine.tech.pem
         mode http
         default_backend my_backend_1
 
